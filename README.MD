@@ -1,0 +1,42 @@
+Pocket sized debug module displaying FPS graph, drawcalls in any DOM (text) element. [Demo](https://samid737.github.io/phaser-pocketdebug-plugin/)
+
+# Description
+
+A quick and convenient way to display basic performance info.
+Displays FPS, MS graphs and drawcalls (WEBGL) in HTML DOM elements. Based upon 
+[pocketplot](https://github.com/samid737/pocketplot), a simple plotting program.
+
+A graph is text only and consists of scanlines:
+
+```javascript
+   _________*_*_____________*____ scanLine 0 (32 bit number)
+   _______*_____*_________*______ scanLine 1
+   _____*_________*__*_*_________ etc....
+   _*_*__________________________ ....
+   ______________________________ ..
+```
+
+# Requirements:
+
+*Phaser v2 (tested in 2.6.2 nd 2.8.4)
+*Phaser.WEBGL mode for drawcall counts
+
+# Usage
+
+```javascript
+pocketdebug =game.plugins.add(Phaser.Plugin.PocketDebug);
+pocketdebug.add(10,0,1,200,61,"FPS");
+
+//arguments : x,y,scale,refreshRate,maxY,label
+//  x,y             : position of graph relative to top-left corner of game
+//  scale           : font-size and width of <pre> times this scalevalues(default 1)
+//  refreshRate     : draw graph every refreshRate ms
+//  maxY (in dev)   : the highest value of your input variable
+//  label (in dev)  : the label of your input (currently only "FPS" or "MS")
+
+```
+
+# Dev
+
+the src folder contains a commented version.
+
