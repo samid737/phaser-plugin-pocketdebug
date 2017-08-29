@@ -26,10 +26,11 @@ A graph is text only and consists of scanlines:
 ```javascript
 pocketdebug =game.plugins.add(Phaser.Plugin.PocketDebug);
 pocketdebug.add(10,0,1,200,61,"FPS");
+//pocketdebug.add(10,150,1,200,100,"MS"); optional
 
 //arguments : x,y,scale,refreshRate,maxY,label
 //  x,y             : position of graph relative to top-left corner of game
-//  scale           : font-size and width of <pre> times this scalevalues(default 1)
+//  scale           : font-size and width of <pre> element multiplied by this scalevalues(default 1)
 //  refreshRate     : draw graph every refreshRate ms
 //  maxY (in dev)   : the highest value of your input variable
 //  label (in dev)  : the label of your input (currently only "FPS" or "MS")
