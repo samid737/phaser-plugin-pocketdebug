@@ -1,4 +1,4 @@
-Pocket sized debug module displaying FPS graph, drawcalls in any DOM (text) element. [Demo](https://samid737.github.io/phaser-pocketdebug-plugin/)
+Pocket sized debug module displaying FPS graph, drawcalls in any DOM (text) element. [Demo](https://samid737.github.io/phaser-plugin-pocketdebug/)
 
 # Description
 
