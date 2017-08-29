@@ -34,7 +34,7 @@ Graph.prototype.draw =function(){
   //scanbinary is a reference number (zero lag binary).if reached MSB, reset to zero, else shift by one bit
   this.scanBinary=1>>this.scanBinary==0?0:1<<( this.shiftCount);
   //accumulator, used for scanBinary (see comment at 91); 
-  this.shiftCount=1^this.shiftCount;
+  this.shiftCount=this.shiftCount-1;
   //concatenate and display resulting string
   this.result=this.line4.draw()+this.line3.draw()+this.line2.draw()+this.line1.draw()+this.line0.draw();
   this.result+=this.input+" "+this.label+ " DC: "+this.game.renderer.renderSession.drawCount;
