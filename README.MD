@@ -1,4 +1,4 @@
-Pocket sized debug module displaying FPS graph, WEBGL drawcalls in any DOM (text) element. [Demo](https://samid737.github.io/phaser-plugin-pocketdebug/)
+Pocket sized debug module for Phaser. Displays FPS graph, WEBGL drawcalls in any DOM (text) element. [Demo](https://samid737.github.io/phaser-plugin-pocketdebug/)
 
 # Description
 
@@ -18,7 +18,7 @@ A graph is text only and consists of scanlines:
 
 # Requirements:
 
-* Phaser v2 (tested in 2.6.2 nd 2.8.4)
+* Phaser v2 (tested in 2.6.2 and 2.8.4)
 * Phaser.WEBGL mode for draw counts
 
 # Usage
@@ -37,6 +37,6 @@ pocketdebug.add(10,0,1,200,61,"FPS");
 
 ```
 
-# Dev
+# Dev notes
 
-the src folder contains a commented version.
+the src folder contains a commented version. The string building is currently a bottleneck. I would to hear about any ideas, contributions, optimizations regarding this, or the code in general.
