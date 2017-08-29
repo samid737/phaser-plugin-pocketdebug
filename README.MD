@@ -18,8 +18,8 @@ A graph is text only and consists of scanlines:
 
 # Requirements:
 
-*Phaser v2 (tested in 2.6.2 nd 2.8.4)
-*Phaser.WEBGL mode for drawcall counts
+* Phaser v2 (tested in 2.6.2 nd 2.8.4)
+* Phaser.WEBGL mode for drawcall counts
 
 # Usage
 
