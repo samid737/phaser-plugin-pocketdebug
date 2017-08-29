@@ -40,4 +40,5 @@ pocketdebug.add(10,0,1,200,61,"FPS");
 # Dev
 
 the src folder contains a commented version.
+There is A  bottleneck in building the combined string. Concatenation of the scanlines is relatively costly, but also replacing 0 with _ and 1 with *  
 
