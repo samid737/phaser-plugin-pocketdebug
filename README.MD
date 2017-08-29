@@ -39,4 +39,4 @@ pocketdebug.add(10,0,1,200,61,"FPS");
 
 # Dev notes
 
-the src folder contains a commented version. The string building is currently a bottleneck. I would to hear about any ideas, contributions, optimizations regarding this, or the code in general.
+the src folder contains a commented version. The string building is currently a bottleneck. Any ideas, contributions, optimizations regarding this, or the code in general are much appreciated.
