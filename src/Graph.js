@@ -15,7 +15,8 @@
 //  label (in dev)  : the label of your input variable
 //  input (in dev)  : your input variable
 
-var Graph = function (game,x,y,scale,refreshRate,maxY,label){
+var Graph = function (game,x,y,scale,refreshRate,maxY,label)
+{
   this.game=game,this.scale=scale,this.label=label,this.maxY=maxY;
   //explained in Graph.draw(), the zeros are used to pad the final string result.
   this.scanBinary=this.shiftCount=0;this.zeros= Array(37).join("0");
@@ -26,7 +27,8 @@ var Graph = function (game,x,y,scale,refreshRate,maxY,label){
   return this;
 }
 //graph drawing, concatenates Scanline.draw() outputs, then displays the string
-Graph.prototype.draw =function(){
+Graph.prototype.draw =function()
+{
   //which input to draw
   this.input=this.label=="FPS"?this.game.time.fps:this.game.time.elapsedMS;
   //60 fps->row 0, 50 fps->row 1 , 40 fps->row 2.......
