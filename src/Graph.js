@@ -14,10 +14,11 @@
 //  maxY (in dev)   : the highest value of your input variable
 //  label (in dev)  : the label of your input variable
 //  input (in dev)  : your input variable
+//  bitMode         : retro mode, do not reformat 0's and 1's
 
-var Graph = function (game,x,y,scale,refreshRate,maxY,label)
+var Graph = function (game,x,y,scale,refreshRate,maxY,label,bitMode)
 {
-  this.game=game,this.scale=scale,this.label=label,this.maxY=maxY;
+  this.game=game,this.scale=scale,this.label=label,this.maxY=maxY;this.bitMode=bitMode;
   //explained in Graph.draw(), the zeros are used to pad the final string result.
   this.scanBinary=this.shiftCount=0;this.zeros= Array(37).join("0");
   // add the 5 scanlines      
@@ -33,7 +34,7 @@ Graph.prototype.draw =function()
   this.input=this.label=="FPS"?this.game.time.fps:this.game.time.elapsedMS;
   //60 fps->row 0, 50 fps->row 1 , 40 fps->row 2.......
   this.rownumber=~~((this.input)/(this.maxY/5));
-  //scanbinary is a reference number (zero lag binary).if reached MSB, reset to zero, else shift by one bit
+  //scanbinary is a reference used for masking).if reached MSB, reset to zero, else shift by one bit
   this.scanBinary=1>>this.scanBinary==0?0:1<<( this.shiftCount);
   //accumulator, used for scanBinary (see comment at 91); 
   this.shiftCount=this.shiftCount-1;

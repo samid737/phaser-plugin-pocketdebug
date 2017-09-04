@@ -34,6 +34,7 @@ pocketdebug.add(10,0,1,200,61,"FPS");
 //  refreshRate     : draw graph every refreshRate ms
 //  maxY (in dev)   : the highest value of your input variable
 //  label (in dev)  : the label of your input (currently only "FPS" or "MS")
+//  bitMode         : do not reformat scanline, will output 0's and 1's.
 
 ```
 

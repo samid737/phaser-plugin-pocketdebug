@@ -1,47 +1,41 @@
-var PocketDebug =this.Phaser.Plugin.PocketDebug = function (game, parent) 
+var PocketDebug =this.Phaser.Plugin.PocketDebug = function (game, parent)
 {
   Phaser.Plugin.call(this, game, parent);
   this.name="Phaser Pocket Debug Plugin";
   this.graphs={};
-  this.zeromask= "000000000000000000000000000000000000";
 }
 
 Phaser.Plugin.PocketDebug.prototype = Object.create(Phaser.Plugin.prototype);
 Phaser.Plugin.PocketDebug.prototype.constructor = Phaser.Plugin.PocketDebug;
 
-PocketDebug.prototype.init = function() 
+PocketDebug.prototype.init = function()
 {
   this.game.time.advancedTiming = true;
 };
 
-PocketDebug.prototype.add = function(x,y,scale,refreshRate,maxY,label,input) 
+PocketDebug.prototype.add = function(x,y,scale,refreshRate,maxY,label,input,bitMode)
 {
-  this.gr=new Graph(game,x,y,scale,refreshRate,maxY,label);
+  this.gr=new Graph(game,x,y,scale,refreshRate,maxY,label,bitMode);
   this.gr.node=document.createElement("pre"); 
-  this.gr.mask=document.createElement("pre"); 
-  this.gr.node.setAttribute("style", "background-color: rgba(255, 40, 255, 0.6);text-decoration: underline; position: absolute;left:"+x+"px;top:"+y+"px;width:"+(32*10*this.gr.scale)+"px;text-align:justify;color: rgba(255, 234, 2, 1);font-weight:normal;font-size:"+14*this.gr.scale+"px");
-  this.gr.mask.setAttribute("style", ";position: absolute;left:"+x+"px;top:"+y+"px;width:"+(32*10*this.gr.scale)+"px;text-align:justify;color:rgba(158, 0, 158, 1);font-weight:normal;font-size:"+14*this.gr.scale+"px");  
+  this.gr.node.setAttribute("style", "background-color: rgba(255, 40, 255, 0.6); position: absolute;left:"+x+"px;top:"+y+"px;width:"+(32*10*this.gr.scale)+"px;text-align:justify;color:white;font-weight:bold;font-size:"+14*this.gr.scale+"px");
   this.game.canvas.parentNode.appendChild( this.gr.node); 
-  this.game.canvas.parentNode.appendChild( this.gr.mask); 
-  this.gr.mask.textContent=this.zeromask +"\n"+this.zeromask +"\n"+this.zeromask +"\n"+this.zeromask +"\n"+this.zeromask +"\n";
+  this.game.time.events.loop(refreshRate, this.gr.draw,this.gr);
   this.graphs[this.gr.label]=this.gr;
-  this.game.time.events.loop(refreshRate, this.gr.draw,this.gr);  
   return this.gr;
 };
 
-PocketDebug.prototype.destroy = function() 
+PocketDebug.prototype.destroy = function()
 {
-  for(var graph in this.graphs)
-  {
+  for(var graph in this.graphs){
     this.game.canvas.parentNode.removeChild(this.graphs[graph].node);
     this.graphs[graph]=null;    
   }  
   Phaser.Plugin.prototype.destroy.apply(this,arguments);        
 };
 
-var Graph = function (game,x,y,scale,refreshRate,maxY,label)
+var Graph = function (game,x,y,scale,refreshRate,maxY,label,bitMode)
 {
-  this.game=game,this.scale=scale,this.label=label,this.maxY=maxY;
+  this.game=game,this.scale=scale,this.label=label,this.maxY=maxY;this.bitmode=bitMode;
   this.scanBinary=this.shiftCount=0;this.zeros= Array(37).join("0");//       
   this.line0=new Scanline(this,0);this.line1=new Scanline(this,1);
   this.line2=new Scanline(this,2);this.line3=new Scanline(this,3);
@@ -69,7 +63,7 @@ var Scanline=function(gr,linenumber)
 Scanline.prototype.draw=function()
 {
   this.binary=1>> this.gr.scanBinary==0?0:(this.gr.rownumber== this.linenumber?(this.gr.scanBinary^this.binary):(this.binary&~this.gr.scanBinary));//this.binary=this.gr.scanBinary; 
-  this.n=this.binary.toString(2); 
-  this.n=this.gr.zeros.substr(this.n.length)+this.n;
+  this.n=this.binary.toString(2);
+  this.n=this.bitMode?(this.gr.zeros.substr( this.n.length)+ this.n):(this.gr.zeros.substr( this.n.length)+ this.n).replace(/0/g, "_").replace(/1/g, '*');
   return this.n+'\n';
 }
