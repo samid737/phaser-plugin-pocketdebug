@@ -14,6 +14,7 @@
 
 ### Updates
 
+* changed coloring.
 * binary format now used. An extra mask cancels/hides the zeros
 * string replace() removed to increase performance.
 

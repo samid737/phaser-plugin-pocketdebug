@@ -29,7 +29,6 @@ PocketDebug.prototype.add = function(x,y,scale,refreshRate,maxY,label,input)
   return this.gr;
 };
 
-PocketDebug.prototype.destroy = function() {
 PocketDebug.prototype.destroy = function() 
 {
   for(var graph in this.graphs)
