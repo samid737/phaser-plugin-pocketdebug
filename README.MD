@@ -40,4 +40,4 @@ pocketdebug.add(10,0,1,200,61,"FPS");
 # Dev notes
 
 the src folder contains a commented version to explain the program. Ideas, contributions, optimizations, suggestions are much much appreciated.
-All changes are found in the [Changelog](https://samid737.github.io/phaser-plugin-pocketdebug/CHANGELOG.md/);
+All changes are found in the [Changelog](https://github.com/samid737/phaser-plugin-pocketdebug/blob/master/CHANGELOG.md);
