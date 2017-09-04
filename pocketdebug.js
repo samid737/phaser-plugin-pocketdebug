@@ -35,7 +35,7 @@ PocketDebug.prototype.destroy = function()
 
 var Graph = function (game,x,y,scale,refreshRate,maxY,label,bitMode)
 {
-  this.game=game,this.scale=scale,this.label=label,this.maxY=maxY;this.bitmode=bitMode;
+  this.game=game,this.scale=scale,this.label=label,this.maxY=maxY;this.bitMode=bitMode;
   this.scanBinary=this.shiftCount=0;this.zeros= Array(37).join("0");//       
   this.line0=new Scanline(this,0);this.line1=new Scanline(this,1);
   this.line2=new Scanline(this,2);this.line3=new Scanline(this,3);
@@ -64,6 +64,6 @@ Scanline.prototype.draw=function()
 {
   this.binary=1>> this.gr.scanBinary==0?0:(this.gr.rownumber== this.linenumber?(this.gr.scanBinary^this.binary):(this.binary&~this.gr.scanBinary));//this.binary=this.gr.scanBinary; 
   this.n=this.binary.toString(2);
-  this.n=this.bitMode?(this.gr.zeros.substr( this.n.length)+ this.n):(this.gr.zeros.substr( this.n.length)+ this.n).replace(/0/g, "_").replace(/1/g, '*');
+  this.n=this.gr.bitMode?(this.gr.zeros.substr( this.n.length)+ this.n):(this.gr.zeros.substr( this.n.length)+ this.n).replace(/0/g, "_").replace(/1/g, '*');
   return this.n+'\n';
 }

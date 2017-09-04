@@ -9,8 +9,8 @@ function preload() {
 
 function create() {
   pocketdebug = game.plugins.add(Phaser.Plugin.PocketDebug);
-  pocketdebug.add(10,0,0.8,200,61,"FPS");
-  pocketdebug.add(10,150,1,100,100,"MS");  
+  pocketdebug.add(10,0,0.8,200,61,"FPS",null,true);
+  pocketdebug.add(10,150,1,100,100,"MS",null,true);  
 
   game.time.events.loop(200,addSprite,this);
 

@@ -28,12 +28,13 @@ pocketdebug =game.plugins.add(Phaser.Plugin.PocketDebug);
 pocketdebug.add(10,0,1,200,61,"FPS");
 //pocketdebug.add(10,150,1,200,100,"MS"); optional
 
-//arguments : x,y,scale,refreshRate,maxY,label
+//arguments : x,y,scale,refreshRate,maxY,label,input,bitMode
 //  x,y             : position of graph relative to top-left corner of game
 //  scale           : font-size and width of <pre> element multiplied by this scalevalue(default 1)
 //  refreshRate     : draw graph every refreshRate ms
 //  maxY (in dev)   : the highest value of your input variable
 //  label (in dev)  : the label of your input (currently only "FPS" or "MS")
+//  input (in dev)  : yet to add
 //  bitMode         : do not reformat scanline, will output 0's and 1's.
 
 ```

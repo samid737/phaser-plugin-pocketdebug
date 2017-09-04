@@ -12,6 +12,6 @@ Scanline.prototype.draw=function()
   //this.binary=this.gr.scanBinary;//for debugging , displays default scanBinary
   this.n=this.binary.toString(2);
   //if in bitMode do no replace 0's and 1's
-  this.n=this.bitMode?(this.gr.zeros.substr( this.n.length)+ this.n):(this.gr.zeros.substr( this.n.length)+ this.n).replace(/0/g, "_").replace(/1/g, '*');
+  this.n=this.gr.bitMode?(this.gr.zeros.substr( this.n.length)+ this.n):(this.gr.zeros.substr( this.n.length)+ this.n).replace(/0/g, "_").replace(/1/g, '*');
   return this.n+'\n';
 }
