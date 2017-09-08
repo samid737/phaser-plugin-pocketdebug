@@ -35,10 +35,10 @@ Panel.prototype.addGraph=function(maxY,refreshRate,bits,label)
 
 Panel.prototype.addUI=function(x,y,width,scale,bgcolor,button,label,context,event,parameters)
 {
-    this.element=document.createElement("pre"); 
+    this.element=document.createElement("pre");
     this.element.setAttribute("style","position: absolute;left:"+(x+10)+"px;top:"+y+"px;width:"+(width*scale)+"px;text-align:center;color:white;font-weight:bold;font-size:"+11*scale+"px");
     this.game.canvas.parentNode.appendChild(this.element); 
-    this.element.style["background-color"]=UI?this.dbg.fastHexToRGB(bgcolor,0.3):this.dbg.fastHexToRGB(bgcolor,0.6); 
+    this.element.style["background-color"]=button?this.dbg.fastHexToRGB(bgcolor,0.3):this.dbg.fastHexToRGB(bgcolor,0.6); 
     this.element.textContent=button?label:0;
     this.element.onclick=event.bind(context,parameters);   
     this.nodes.push(this.element);   
