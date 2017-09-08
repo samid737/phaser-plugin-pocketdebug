@@ -8,29 +8,44 @@ function preload() {
 }
 
 function create() {
-  pocketdebug = game.plugins.add(Phaser.Plugin.PocketDebug);
-  pocketdebug.add(10,0,0.8,200,61,"FPS",null);
-  pocketdebug.add(10,150,1,100,100,"MS",null);  
-
-  game.time.events.loop(200,addSprite,this);
-
+  counter=0;
+  threshold=200;
+  pocketdebug = game.plugins.add(Phaser.Plugin.PocketDebug,0,0,1,true);
   dudes=game.add.group();
+  dudes.spawnrate=200;
+
+        //gui instance
 }
 
 function update() {
-  //dudes.forEach(function(dude){dude.rotation+=0.08});
+  counter++;
+  if(counter>dudes.spawnrate){
+
+    counter=0;
+    for(i=0;i<400/(dudes.spawnrate+1);i++){
+      addSprite();      
+    }
+  }
+
+  if(game.time.fps<10){
+    dudes.forEach(function(dude){dude.destroy()});
+  }
+  dudes.forEach(function(dude){dude.body.velocity.x+=0.08});
+  dudes.forEach(function(dude){dude.body.angularVelocity+=0.08});
+  
+  game.physics.arcade.collide(dudes,dudes);
 }
 
 function render() {
 }
 
 function addSprite(){
-  if(game.time.fps>40){
     child=game.add.sprite(game.width*Math.random(),game.height*Math.random(),'dude');
     game.physics.arcade.enable(child);
-   // dudes.add(child);
-  }else{
-    dudes.forEach(function(dude){dude.destroy()});
-  }
-
+    child.body.velocity.x=Math.random()*1000;
+    child.body.velocity.y=Math.random()*1000;
+    child.body.collideWorldBounds=true;
+    child.body.bounce.setTo(1);
+    game.add.tween(child).to({x:500,y:400},1000,"Linear",true);
+    dudes.add(child);
 }

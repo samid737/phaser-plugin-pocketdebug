@@ -2,7 +2,6 @@ Pocket sized debug module for Phaser. Displays FPS graph, WEBGL drawcalls in any
 
 # Description
 
-A quick and convenient way to display basic performance info.
 Displays FPS, MS graphs and drawcalls (WEBGL) in HTML DOM elements. Based upon 
 [pocketplot](https://github.com/samid737/pocketplot), a simple plotting program.
 
@@ -25,21 +24,29 @@ A graph is text only and consists of scanlines:
 
 ```javascript
 pocketdebug =game.plugins.add(Phaser.Plugin.PocketDebug);
-pocketdebug.add(10,0,1,200,61,"FPS");
-//pocketdebug.add(10,150,1,200,100,"MS"); optional
 
-//arguments : x,y,scale,refreshRate,maxY,label,input,bitMode
-//  x,y             : position of graph relative to top-left corner of game
-//  scale           : font-size and width of <pre> element multiplied by this scalevalue(default 1)
-//  refreshRate     : draw graph every refreshRate ms
-//  maxY (in dev)   : the highest value of your input variable
-//  label (in dev)  : the label of your input (currently only "FPS" or "MS")
-//  input (in dev)  : yet to add
-//  bitMode         : do not reformat scanline, will output 0's and 1's.
+pocketdebug =game.plugins.add(Phaser.Plugin.PocketDebug,x,y,scale,advanced,bitmode);
+
+//arguments : 
+//  x,y             : position of panels relative to top-left corner of game
+//  scale           : font-size and width of panel element multiplied by this scalevalue(default 1)
+//  advanced        : adds an extra panel to measure state,stage,plugins,tweens,sound,input,physics,particles update time (in microseconds. 1 us=0.001ms).
+//  bitmode         : do not reformat scanline, will output 0's and 1's, for retro feel and less overhead.
 
 ```
+* UI:
+
+* --    :   hide/show graphs.
+* +     :   zoom in Y range.
+* -     :   zoom out & range.
+* ->    :   cycle trough graphs.
+* >>    :   increase refresh rate, resets after 10 clicks.
+
+* click on A graph to change the color for better color contrast.
 
 # Dev notes
 
-the src folder contains a commented version to explain the program. Ideas, contributions, optimizations, suggestions are much much appreciated.
+the src folder contains a commented version. Ideas, contributions, optimizations, suggestions are very welcome. 
 All changes are found in the [Changelog](https://github.com/samid737/phaser-plugin-pocketdebug/blob/master/CHANGELOG.md);
+The source code for the wrapper function is from phaser-debug by englercj : https://github.com/englercj/phaser-debug.
+

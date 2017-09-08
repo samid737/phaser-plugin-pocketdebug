@@ -1,10 +1,16 @@
 {
   "name": "phaser-plugin-pocketdebug",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "Pocket sized debug module for Phaser. Display FPS graph, drawcalls in DOM text.",
   "main": "pocketdebug.js",
   "directories": {
     "example": "example"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-stripcomments": "^0.7.2"
   },
   "scripts": {
     "test": "git repository: (https://github.com/samid737/phaser-plugin-pocketdebug.git"
