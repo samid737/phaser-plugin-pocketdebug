@@ -37,10 +37,10 @@ pocketdebug =game.plugins.add(Phaser.Plugin.PocketDebug,x,y,scale,advanced,bitmo
 * UI:
 
 * --    :   hide/show graphs.
-* +     :   zoom in Y range.
-* -     :   zoom out & range.
-* ->    :   cycle trough graphs.
-* >>    :   increase refresh rate, resets after 10 clicks.
+* \+     :   zoom in Y range.
+* \-     :   zoom out & range.
+* \->    :   cycle trough graphs.
+* \>>    :   increase refresh rate, resets after 10 clicks.
 
 * click on A graph to change the color for better color contrast.
 
