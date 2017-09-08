@@ -18,13 +18,13 @@ Phaser.Plugin.PocketDebug.prototype.constructor = Phaser.Plugin.PocketDebug;
 
 PocketDebug.prototype.init = function(x,y,scale,advanced,bits) 
 {  
-    this.advanced=advanced;
+    this.x=x||0;this.y =y||0;this.scale=scale||1;this.advanced=advanced||false;
     this.game.time.advancedTiming = true;
-    this.addPanel(x,0+y,scale,this.parameters,this);  
+    this.addPanel(this.x,0+this.y,this.scale,this.parameters,this);  
     this.panels[0].addGraph(60,10,bits,"FPS");
     this.panels[0].addGraph(20,10,bits,"MS");
     if(this.advanced){
-        this.addPanel(x,100+y,scale,this.components,this);      
+        this.addPanel(this.x,100+this.y,this.scale,this.components,this);      
         for (var component in this.components) 
         {
             this.wrap(this.game, component, "update", component);
