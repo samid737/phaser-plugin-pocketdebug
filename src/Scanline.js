@@ -8,7 +8,7 @@ var Scanline=function(gr,linenumber)
 Scanline.prototype.draw=function()
 {
   //if reached MSB then reset scanline, else, if this fps is at my level, draw at my scanline, else silence me (mask)
-  this.binary=1>> this.gr.scanBinary==0?0:(this.gr.rownumber== this.linenumber?(this.gr.scanBinary^this.binary):(this.binary&~this.gr.scanBinary));
+  this.binary=this.gr.scanBinary==1?0:(this.gr.rownumber== this.linenumber?(this.gr.scanBinary^this.binary):(this.binary&~this.gr.scanBinary));//this.binary=this.gr.scanBinary; 
   //this.binary=this.gr.scanBinary;//for debugging , displays default scanBinary
   this.n=this.binary.toString(2);
   //if in bitMode do no replace 0's and 1's
