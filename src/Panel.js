@@ -16,7 +16,7 @@ var Panel =function(x,y,scale,components,dbg)
 
 Panel.prototype.update=function()
 {
-    this.content.textContent=this.current.update(this.components[this.current.label]);
+   this.current.update(this.components[this.current.label]);
 };
 
 Panel.prototype.destroy=function()
@@ -26,7 +26,7 @@ Panel.prototype.destroy=function()
 
 Panel.prototype.addGraph=function(maxY,refreshRate,bits,label)
 {
-    this.graph=new Graph(this.game,maxY,refreshRate,bits,label);
+    this.graph=new Graph(this.game,maxY,refreshRate,bits,label,this.content);
     this.graphs.push(this.graph);   
     this.current=this.graphs[0];
 };

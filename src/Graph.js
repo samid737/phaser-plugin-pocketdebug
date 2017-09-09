@@ -13,9 +13,9 @@
 //  bits            : retro mode, do not reformat 0's and 1's
 //  label (in dev)  : the label of your input variable
 
-var Graph = function (game,maxY,refreshRate,bits,label)
+var Graph = function (game,maxY,refreshRate,bits,label,content)
 {
-    this.game=game;this.refreshRate=this.initialRate=refreshRate;this.maxY=maxY;this.label=label;this.bits=bits;this.hide=false;
+    this.game=game;this.refreshRate=this.initialRate=refreshRate;this.maxY=maxY;this.label=label;this.bits=bits;this.hide=false;this.content=content;
     //explained in Graph.draw(), the zeros are used to pad the final string result.
     this.scanBinary=this.startBinary=0x010000000;this.zeros= Array(30).join("0"); this.counter=0;
     // add the scanlines      
@@ -41,7 +41,7 @@ Graph.prototype.update =function(input)
         //concatenate and display resulting string
         this.result=this.line4.draw()+this.maxY+'\n'+this.line3.draw()+'\n'+this.line2.draw()+'\n'+this.line1.draw()+'\n'+this.line0.draw()+'\n';
         this.result+=this.input+" "+this.label+" DC:"+this.game.renderer.renderSession.drawCount;
+        this.content.textContent=this.result;
     }
-    return this.result;
 };
 

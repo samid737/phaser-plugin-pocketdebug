@@ -87,7 +87,7 @@ var Panel =function(x,y,scale,components,dbg)
 
 Panel.prototype.update=function()
 {
-    this.content.textContent=this.current.update(this.components[this.current.label]);
+   this.current.update(this.components[this.current.label]);
 };
 
 Panel.prototype.destroy=function()
@@ -97,7 +97,7 @@ Panel.prototype.destroy=function()
 
 Panel.prototype.addGraph=function(maxY,refreshRate,bits,label)
 {
-    this.graph=new Graph(this.game,maxY,refreshRate,bits,label);
+    this.graph=new Graph(this.game,maxY,refreshRate,bits,label,this.content);
     this.graphs.push(this.graph);   
     this.current=this.graphs[0];
 };
@@ -145,9 +145,9 @@ Panel.prototype.speed=function()
     this.setspeed.style["background-color"]=this.dbg.fastHexToRGB(0xff0000*this.current.refreshRate|0xff0000,0.3+0.05*(10-this.current.refreshRate));
 };
 
-var Graph = function (game,maxY,refreshRate,bits,label)
+var Graph = function (game,maxY,refreshRate,bits,label,content)
 {
-    this.game=game;this.refreshRate=this.initialRate=refreshRate;this.maxY=maxY;this.label=label;this.bits=bits;this.hide=false;
+    this.game=game;this.refreshRate=this.initialRate=refreshRate;this.maxY=maxY;this.label=label;this.bits=bits;this.hide=false;this.content=content;
     this.scanBinary=this.startBinary=0x010000000;this.zeros= Array(30).join("0"); this.counter=0;
     this.line0=new Scanline(this,0);this.line1=new Scanline(this,1);
     this.line2=new Scanline(this,2);this.line3=new Scanline(this,3);
@@ -165,8 +165,8 @@ Graph.prototype.update =function(input)
         this.scanBinary=((this.scanBinary>>1))||this.startBinary;
         this.result=this.line4.draw()+this.maxY+'\n'+this.line3.draw()+'\n'+this.line2.draw()+'\n'+this.line1.draw()+'\n'+this.line0.draw()+'\n';
         this.result+=this.input+" "+this.label+" DC:"+this.game.renderer.renderSession.drawCount;
+        this.content.textContent=this.result;
     }
-    return this.result;
 };
 
 var Scanline=function(gr,linenumber)
