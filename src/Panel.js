@@ -14,6 +14,7 @@ var Panel =function(x,y,scale,components,dbg)
 	return this;
 };
 
+//only update the current graph
 Panel.prototype.update=function()
 {
    this.current.update(this.components[this.current.label]);
@@ -23,6 +24,8 @@ Panel.prototype.destroy=function()
 {
     this.nodes.forEach(function(element){this.game.canvas.parentNode.removeChild(element);});
 };
+
+//adds a data graph to the panel that can be cycled trough.
 
 Panel.prototype.addGraph=function(maxY,refreshRate,bits,label)
 {
